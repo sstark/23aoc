@@ -23,6 +23,7 @@ find_match () {
     done
 }
 
+integer res=0
 while read line
 do
     for i in {1..$#line}
@@ -43,5 +44,7 @@ do
             break
         fi 
     done
-    print "$num1$num2"
-done | awk '{ sum+=$0 } END { print sum }'
+    res+="$num1$num2"
+done
+
+print $res
