@@ -44,4 +44,4 @@ do
         fi 
     done
     print "$num1$num2"
-done
+done | awk '{ sum+=$0 } END { print sum }'
