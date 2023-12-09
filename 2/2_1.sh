@@ -22,13 +22,12 @@ while read _ id data
 do
     id=${id%:}
     DATA=${data//(,|;)/}
-    if     [[ $(max red) -gt $RED ]] \
-        || [[ $(max green) -gt $GREEN ]] \
-        || [[ $(max blue) -gt $BLUE ]]
+    if     [[ $(max red) -le $RED ]] \
+        && [[ $(max green) -le $GREEN ]] \
+        && [[ $(max blue) -le $BLUE ]]
     then
-        continue
+        res+=$id
     fi
-    res+=$id
 done
 
 print $res
