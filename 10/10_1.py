@@ -57,6 +57,8 @@ class PipeMap():
         # peek in any direction
         for direction in [N, E, S, W]:
             pipe_pos = self.vec_add(pos, direction)
+            if pipe_pos[0] not in range(self.width) or pipe_pos[1] not in range(self.height):
+                continue
             pipe_symbol = self.map[pipe_pos]
             for connection in ctrl[pipe_symbol]:
                 # We found a symbol that has a connection to us!
