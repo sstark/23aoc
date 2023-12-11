@@ -8,14 +8,12 @@ def dist(a, b):
 
 def expand(l, by=1):
     out = []
-    vals = sorted(l)
-    gaps = set(range(vals[-1])) - set(vals)
+    gaps = set(range(l[-1])) - set(l)
     for e in l:
-        new = e
         for gap in reversed(sorted(gaps)):
-            if gap < new:
-                new += by
-        out.append(new)
+            if gap < e:
+                e += by
+        out.append(e)
     return out
 
 galaxies = []
@@ -29,7 +27,7 @@ for line in stdin:
     y += 1
 
 galaxies = zip(
-    expand([x[0] for x in galaxies], by=999999),
-    expand([x[1] for x in galaxies], by=999999)
+    expand(sorted([x[0] for x in galaxies]), by=999999),
+    expand(sorted([x[1] for x in galaxies]), by=999999)
 )
 print(sum(starmap(dist, combinations(galaxies, 2))))
