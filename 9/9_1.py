@@ -18,9 +18,7 @@ res = 0
 for line in stdin:
     seq = list(map(int, line.strip().split()))
     res += seq[-1]
-    while True:
-        if nullseq(seq):
-            break
+    while not nullseq(seq):
         seq = diffseq(seq)
         res += seq[-1]
 

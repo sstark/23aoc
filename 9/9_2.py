@@ -19,9 +19,7 @@ res = 0
 for line in stdin:
     seq = list(map(int, line.strip().split()))
     stack = [seq[0]]
-    while True:
-        if nullseq(seq):
-            break
+    while not nullseq(seq):
         seq = diffseq(seq)
         stack.append(seq[0])
     res += reduce(sub, reversed(stack))
